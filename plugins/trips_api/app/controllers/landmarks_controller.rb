@@ -20,6 +20,7 @@ class LandmarksController < ApplicationController
   helper :sort
   include SortHelper
   helper :timelog
+  helper :application
 
   def index
     retrieve_query
@@ -42,7 +43,7 @@ class LandmarksController < ApplicationController
 
       respond_to do |format|
         format.api {
-          Issue.load_visible_relations(@issues) if include_in_api_response?('relations')
+          Issue.load_visible_relations(@issues) #if include_in_api_response?('relations')
         }
       end
     else
