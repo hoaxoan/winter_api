@@ -27,7 +27,7 @@ class TripsController < ApplicationController
 
   # Show @project
   def show
-    @trackers = @trip.rolled_up_trackers.visible
+    @trackers = @trip.rolled_up_trackers
 
     respond_to do |format|
       format.api

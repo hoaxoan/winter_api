@@ -74,7 +74,7 @@
       </p>
       <%= javascript_tag "observeSearchfield('principal_search', null, '#{ escape_javascript autocomplete_project_memberships_path(@project, :format => 'js') }')" %>
       <div id="principals_for_new_member">
-        <%= render_principals_for_new_members(@project) %>
+        <%#= render_principals_for_new_members(@project) %>
       </div>
       <p>
         <%= l(:label_role_plural) %>:

@@ -511,7 +511,7 @@ class ApplicationController < ActionController::Base
   # for an API response based on offset, limit and page parameters
   def api_offset_and_limit(options=params)
     if options[:offset].present?
-      offset = options[:offset].to_i
+      offset = options[:offset].to_i - 1
       if offset < 0
         offset = 0
       end
