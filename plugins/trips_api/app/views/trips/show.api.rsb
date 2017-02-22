@@ -1,0 +1,24 @@
+api.id          @trip.id
+api.name        @trip.name
+api.description @trip.description
+api.homepage    @trip.homepage
+api.parent(:id => @trip.parent.id, :name => @trip.parent.name) if @trip.parent && @trip.parent.visible?
+api.status      @trip.status
+api.is_public   @trip.is_public?
+
+render_api_custom_values @trip.visible_custom_field_values, api
+
+api.created_on @trip.created_on
+api.updated_on @trip.updated_on
+
+api.array :categories do
+  @trip.trackers.each do |tracker|
+    api.category(:id => tracker.id, :name => tracker.name)
+  end
+end
+
+api.array :images do
+    @trip.attachments.each do |image|
+     render_api_attachment(image, api)
+    end
+end

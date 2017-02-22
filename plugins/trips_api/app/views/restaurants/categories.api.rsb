@@ -1,0 +1,30 @@
+api.array :categories do
+  @restaurants.each do |key, value|
+    api.category do
+      api.id key.id
+      api.name key.name
+
+
+      api.array :restaurants do
+        value.each do |restaurant|
+          api.restaurant do
+            api.id restaurant.id
+            api.name restaurant.subject
+            api.description restaurant.description
+            api.created_on restaurant.created_on
+            api.updated_on restaurant.updated_on
+            api.closed_on restaurant.closed_on
+
+            api.array :images do
+              restaurant.attachments.each do |attachment|
+                render_api_attachment(attachment, api)
+              end
+            end
+          end
+        end
+
+      end
+
+    end
+  end
+end
